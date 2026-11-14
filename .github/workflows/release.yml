@@ -22,7 +22,7 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Install Rust
         run: rustup toolchain install stable --profile minimal --component clippy && rustup default stable
       - name: Clippy
@@ -48,14 +48,14 @@ jobs:
       # Static C runtime on Windows: no Visual C++ redistributable needed.
       RUSTFLAGS: ${{ matrix.os == 'windows-latest' && '-C target-feature=+crt-static' || '' }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Install Rust
         run: rustup toolchain install stable --profile minimal --target ${{ matrix.target }} && rustup default stable
       - name: Build (optimized)
         run: cargo build --locked --release --target ${{ matrix.target }}
       - name: Smoke test
         run: target/${{ matrix.target }}/release/${{ matrix.bin }} --version
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: bin-${{ matrix.target }}
           path: target/${{ matrix.target }}/release/${{ matrix.bin }}
@@ -68,8 +68,8 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v8
         with:
           path: bins
       - name: Download official adb (Android SDK Platform-Tools)
