@@ -1,0 +1,14 @@
+revtether
+Copyright 2026 the revtether authors
+Licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This project is a Rust reimplementation of the relay server of gnirehtet
+(https://github.com/Genymobile/gnirehtet), Copyright (C) 2017 Genymobile,
+licensed under the Apache License, Version 2.0. Its protocol and design are
+followed, and some unit-test vectors are ported from its test suite.
+
+apk/gnirehtet.apk is the unmodified gnirehtet v2.5.1 Android client from the
+official release (Copyright (C) 2017 Genymobile, Apache License 2.0).
+
+Release archives also contain adb from Google's Android SDK Platform-Tools,
+redistributed unmodified; see adb-NOTICE.txt in the archive for its licenses.
